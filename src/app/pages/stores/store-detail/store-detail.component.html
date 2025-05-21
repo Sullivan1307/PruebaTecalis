@@ -1,0 +1,30 @@
+
+<div class="container align-items-center">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 custom-col-45">
+      <h1 class="title text-left">{{ storeDetails?.name }}</h1>
+      <img [src]="storeDetails?.image_background" class="img-fluid mb-3 img-on-back">
+      <button class="btn-back" (click)="goBack()" aria-label="Volver atrás"> 
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <path d="M20 28L8 16L20 4" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="col-lg-6 col-md-6 custom-col-45">
+      <h2 class="description-title">About the shop:</h2>
+      <p class="description">{{ cleanedDescription }}</p>
+      <h2 class="description-title">Games:</h2>
+      <carousel *ngIf="games.length > 0" class="custom-carousel">
+        <slide *ngFor="let game of games">
+          <img [src]="game.background_image"
+               class="d-block w-100 carousel-img"
+               [alt]="game.name"
+               (click)="openModal(game)">
+          <div class="carousel-caption">
+            <h5>{{ game.name }}</h5>
+          </div>
+        </slide>
+      </carousel>
+    </div>
+  </div>
+</div>

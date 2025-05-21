@@ -2,19 +2,14 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
-
-import { IndexComponent } from "./pages/index/index.component";
-import { ProfilepageComponent } from "./pages/examples/profilepage/profilepage.component";
-import { RegisterpageComponent } from "./pages/examples/registerpage/registerpage.component";
-import { LandingpageComponent } from "./pages/examples/landingpage/landingpage.component";
+import { StoreListComponent } from "./pages/stores/store-list/store-list.component";
+import { StoreDetailComponent } from "./pages/stores/store-detail/store-detail.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "home", pathMatch: "full" },
-  { path: "home", component: IndexComponent },
-  { path: "profile", component: ProfilepageComponent },
-  { path: "register", component: RegisterpageComponent },
-  { path: "landing", component: LandingpageComponent }
-];
+    { path: "", redirectTo: "stores", pathMatch: "full"},
+    { path: "stores", component: StoreListComponent},
+    { path: "stores/:id", component: StoreDetailComponent}
+  ]
 
 @NgModule({
   imports: [
@@ -24,6 +19,6 @@ const routes: Routes = [
       useHash: true
     })
   ],
-  exports: []
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

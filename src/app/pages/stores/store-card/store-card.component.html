@@ -1,0 +1,8 @@
+<div class="card card-coin card-plain text-center store-card" (click)="goDetails(store.id)">
+    <div class="card-header d-flex flex-column align-items-center">
+        <img [src]="store.image_background" alt="{{store.name}}" class="img-profile rounded-circle mb-2">
+        <h3 class="profile-title">{{store.name}}</h3>
+        <p class="card-text">Juegos: {{store.games_count}}</p>
+        <a [href]="'https://' + store.domain" target="_blank" (click)="$event.stopPropagation()" class="btn btn-outline-primary btn-sm mt-1">Ir a tienda</a>
+    </div>
+</div>

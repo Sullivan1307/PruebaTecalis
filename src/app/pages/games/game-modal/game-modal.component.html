@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ game?.name }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()"></button>
+</div>
+<div class="modal-body">
+    <div class="rating-container mb-4">
+        <h5 class="description-title mb-2">Overall Rating:</h5>
+        <div class="progress progress-line-primary">
+            <div
+                class="progress-bar"
+                role="progressbar"
+                [style.width.%]="(game?.rating || 0) * 20"
+                [attr.aria-valuenow]="(game?.rating || 0) * 20"
+                [attr.aria-valuemin]="0"
+                [attr.aria-valuemax]="100">
+            </div>
+        </div>
+        <small>
+            {{ game?.rating?.toFixed(2) }} / 5 
+            <span class="text-muted ml-2">({{ game?.ratings_count }} votes)</span>
+        </small>
+    </div>
+    <h5 class="description-title">About the game:</h5>
+    <p class="description">{{ game?.description_raw }}</p>
+    <h5 class="description-title">Release date:</h5>
+    <p class="description">{{ game?.released }}</p>
+    <carousel *ngIf="imgs.length > 1" class="custom-carousel">
+        <slide *ngFor="let img of imgs">
+            <img [src]="img"
+                 class="d-block w-100 carousel-img"
+                 [alt]="game?.name">
+        </slide>
+    </carousel>
+    <img *ngIf="imgs.length === 1" [src]="imgs[0]" [alt]="game?.name" class="img-fluid mb-3 img-on-back">
+</div>
